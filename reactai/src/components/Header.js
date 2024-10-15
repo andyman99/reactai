@@ -9,22 +9,23 @@ const Header = () => {
 
   return (
     <header>
+      <h1>Heiersmed'n MC Touring</h1>
       <nav>
         <ul>
           <li className={isActive('/') ? 'active' : ''}>
-            <Link to="/">Home</Link>
+            <Link to="/">Hjem</Link>
           </li>
           <li className={isActive('/about') ? 'active' : ''}>
-            <Link to="/about">About Us</Link>
+            <Link to="/about">Om oss</Link>
           </li>
           <li className={isActive('/events') ? 'active' : ''}>
-            <Link to="/events">Events</Link>
+            <Link to="/events">Arrangement</Link>
           </li>
           <li className={isActive('/contact') ? 'active' : ''}>
-            <Link to="/contact">Contact</Link>
+            <Link to="/contact">Kontakt</Link>
           </li>
           <li className={isActive('/blog') ? 'active' : ''}>
-            <Link to="/blog">Blog</Link>
+            <Link to="/blog">Blogg</Link>
           </li>
         </ul>
       </nav>

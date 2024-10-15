@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
+import BlogPostCard from '../components/BlogPostCard';
+import BlogPostDetails from '../components/BlogPostDetails';  // Import BlogPostDetails
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const client = contentful.createClient({
@@ -10,17 +14,17 @@ const Blog = () => {
       accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
-    // Get the current date in ISO format (Contentful uses ISO 8601 format for dates)
     const currentDate = new Date().toISOString();
 
-    // Fetch entries that are published and where the publish date is greater than or equal to the current date
     client.getEntries({
-      content_type: 'blogpost',  // Replace with your actual content type ID
-      'fields.published': true,  // Filter for entries with the "published" boolean set to true
-      'fields.publishDate[lte]': currentDate,  // Fetch posts where publishDate is greater than or equal to now
+      content_type: 'blogpost',
+      'fields.published': true,
+      'fields.publishDate[lte]': currentDate,
     })
     .then((response) => {
-      setPosts(response.items);  // Set filtered blog posts in state
+      // Sort posts by publishDate (newest first)
+      const sortedPosts = response.items.sort((a, b) => new Date(b.fields.publishDate) - new Date(a.fields.publishDate));
+      setPosts(sortedPosts);
     })
     .catch((error) => {
       console.error("Error fetching blog posts:", error);
@@ -28,47 +32,31 @@ const Blog = () => {
   }, []);
 
   return (
-    <div>
-      <h2>Blog</h2>
-      <div>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.sys.id}>
-              {/* Render the Banner (Header Image) */}
-              {post.fields.banner && (
-                <img
-                  src={post.fields.banner.fields.file.url}
-                  alt={post.fields.banner.fields.title || 'Banner Image'}
-                  style={{ width: '100%', height: 'auto' }}
-                />
-              )}
-                
-              <h2>{post.fields.title}</h2>
-              <p>{post.fields.description}</p>
-              <p>{post.fields.content}</p>
-              <p><em>Published on: {new Date(post.fields.publishDate).toDateString()}</em></p>
-                
-                {/* Render the Gallery Images (if any) */}
-                {post.fields.images && post.fields.images.length > 0 && (
-                <div className="gallery">
-                  {post.fields.images.map((image) => (
-                    <img
-                      key={image.sys.id}
-                      src={image.fields.file.url}
-                      alt={image.fields.title || 'Gallery Image'}
-                      style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
-                    />
-                  ))}
-                </div>
+    <div className='container'>
+      <h2>Blogg</h2>
+      
+      <Routes>
+        {/* Blog post list (cards) */}
+        <Route
+          path="/"
+          element={(
+            <div className="blog-posts">
+              {posts.length > 0 ? (
+                posts.map((post) => (
+                  <BlogPostCard key={post.sys.id} post={post} onClick={() => navigate(`/blog/${post.sys.id}`)} />
+                ))
+              ) : (
+                <p>No blog posts available.</p>
               )}
             </div>
-          ))
-        ) : (
-          <p>No blog posts available.</p>
-        )}
-      </div>
+          )}
+        />
+        
+        {/* Blog post details */}
+        <Route path="/:id" element={<BlogPostDetails />} />
+      </Routes>
     </div>
   );
-}
+};
 
 export default Blog;

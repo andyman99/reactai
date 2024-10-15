@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
+/* Base Styles */
+
+/* Reset some default browser styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* General body settings */
+body {
+  font-family: 'Roboto', Arial, sans-serif;  /* Modern sans-serif font */
+  line-height: 1.6;  /* Good line height for readability */
+  color: #333;  /* Neutral dark color for text */
+  background-color: #f9f9f9;  /* Light background color */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;  /* Prevent horizontal overflow */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* General anchor styles */
+a {
+  color: #007BFF;  /* Modern blue color */
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;  /* Hover effect for links */
+}
+
+/* Typography rules */
+h1, h2, h3, h4, h5, h6 {
+  color: #222;  /* Darker color for headings */
+  line-height: 1.2;
+  margin-bottom: 20px;  /* Spacing for all headings */
+}
+
+p {
+  margin-bottom: 1.5em;  /* Ensure space between paragraphs */
+  font-size: 1.1em;  /* Slightly larger base font size for readability */
+}
+
+/* Layout and Container Settings */
+
+/* Centered container with max-width */
+.container {
+  max-width: 1200px;  /* Limit the width for large screens */
+  margin: 0 auto;  /* Center the content */
+  padding: 20px;  /* Add padding inside the container */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .container {
+    padding: 10px;
+    max-width: 100%;  /* Make the container full-width on small screens */
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Container for all blog post cards */
+.blog-posts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsive grid layout */
+  gap: 20px;  /* Spacing between cards */
+  padding: 20px;
+}
+
+/* Blog post card */
+.blog-post-card {
+  max-width: 350px;  /* Maximum width for the card */
+  background-color: #fff;  /* Background color */
+  border: 1px solid #ddd;  /* Light border */
+  border-radius: 8px;  /* Rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
+  overflow: hidden;  /* Ensure content stays within the card */
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+/* Card image */
+.card-image img, .card-image {
+  width: 100%;  /* Image fills the card width */
+  height: 100%;  /* Image fills the height of its container */
+  object-fit: cover;  /* Ensure the image covers the space without distortion */
+}
+
+/* Fallback background when no banner image */
+.fallback-background {
+  background-color: #f0f0f0;  /* Light gray background */
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
 }
 
-.App-link {
-  color: #61dafb;
+/* Fallback text */
+.fallback-text {
+  font-size: 2em;
+  color: #555;
+  font-weight: bold;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Card content */
+.card-content {
+  padding: 15px;
+  flex-grow: 1;  /* Ensure the content grows to fill the space */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Title inside card content */
+.card-content h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+/* Publish date inside card content */
+.card-content p {
+  margin: 0;
+  font-size: 0.9em;
+  color: #777;
+}
+
+/* Author information */
+.author-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.author-info img {
+  margin-left: 10px;
+  border: 1px solid #ddd;
 }
