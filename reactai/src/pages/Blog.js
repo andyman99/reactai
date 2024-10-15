@@ -32,15 +32,15 @@ const Blog = () => {
   }, []);
 
   return (
-    <div className='container'>
+    <section className="container">
       <h2>Blogg</h2>
-      
+
       <Routes>
         {/* Blog post list (cards) */}
         <Route
           path="/"
           element={(
-            <div className="blog-posts">
+            <section className="blog-posts">
               {posts.length > 0 ? (
                 posts.map((post) => (
                   <BlogPostCard key={post.sys.id} post={post} onClick={() => navigate(`/blog/${post.sys.id}`)} />
@@ -48,14 +48,14 @@ const Blog = () => {
               ) : (
                 <p>No blog posts available.</p>
               )}
-            </div>
+            </section>
           )}
         />
         
         {/* Blog post details */}
         <Route path="/:id" element={<BlogPostDetails />} />
       </Routes>
-    </div>
+    </section>
   );
 };
 

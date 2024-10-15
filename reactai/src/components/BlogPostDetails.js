@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import * as contentful from 'contentful';
 import { useParams } from 'react-router-dom';
-import { documentToReactComponents } from '@contentful/rich-text-react-renderer';  // For rich text rendering
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 const BlogPostDetails = () => {
-  const { id } = useParams();  // Get the post ID from the URL
+  const { id } = useParams();
   const [post, setPost] = useState(null);
-  const [author, setAuthor] = useState(null);  // Store author details (name and profile picture)
+  const [author, setAuthor] = useState(null);
 
   useEffect(() => {
     const client = contentful.createClient({
@@ -14,18 +14,16 @@ const BlogPostDetails = () => {
       accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
-    // Fetch the blog post entry
     client.getEntry(id)
       .then((entry) => {
         setPost(entry);
 
-        // Fetch the author if there's an author reference
         if (entry.fields.author) {
           client.getEntry(entry.fields.author.sys.id)
             .then((authorEntry) => {
               setAuthor({
-                name: authorEntry.fields.authorName,  // Fetch the author's name
-                profilePicture: authorEntry.fields.profilepicture ? authorEntry.fields.profilepicture.fields.file.url : null,  // Fetch the profile picture if available
+                name: authorEntry.fields.authorName,
+                profilePicture: authorEntry.fields.profilepicture ? authorEntry.fields.profilepicture.fields.file.url : null,
               });
             })
             .catch((error) => {
@@ -43,69 +41,68 @@ const BlogPostDetails = () => {
   }
 
   const { banner, title, publishDate, description, content, images } = post.fields;
-
-  // Convert publish date to UTC+2 for display
   const publishDateUTCPlus2 = new Date(publishDate);
   publishDateUTCPlus2.setHours(publishDateUTCPlus2.getHours() + 2);
 
   return (
-    <div className="blog-post-details">
+    <article className="blog-post-details">
       {/* Render the Banner (Header Image) */}
       {banner && (
-        <div className="banner-image">
+        <figure className="banner-image">
           <img
             src={banner.fields.file.url}
             alt={banner.fields.title || 'Bannerbilde'}
             style={{ width: '100%', height: 'auto' }}
           />
-        </div>
+          <figcaption>{banner.fields.description || 'Banner'}</figcaption>
+        </figure>
       )}
 
-      {/* Title */}
-      <h1>{title}</h1>
+      <header>
+        <h2>{title}</h2>
+        <p>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long' }).format(publishDateUTCPlus2)}</p>
 
-      {/* Publish date */}
-      <p>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long' }).format(publishDateUTCPlus2)}</p>
+        {/* Author */}
+        {author && (
+          <section className="author-info">
+            <p>Forfatter: {author.name}</p>
+            {author.profilePicture && (
+              <img 
+                src={author.profilePicture} 
+                alt={`Profilbilde av ${author.name}`} 
+                style={{ width: '50px', height: '50px', borderRadius: '50%' }}
+              />
+            )}
+          </section>
+        )}
+      </header>
 
-      {/* Author */}
-      {author && (
-        <div className="author-info">
-          <p>Forfatter: {author.name}</p>
-          {author.profilePicture && (
-            <img 
-              src={author.profilePicture} 
-              alt={`Profilbilde av ${author.name}`} 
-              style={{ width: '50px', height: '50px', borderRadius: '50%' }}
-            />
-          )}
-        </div>
-      )}
-
-      {/* Description */}
       <p>{description}</p>
 
       {/* Content (if it exists) */}
       {content && (
-        <div>
+        <section className="rich-content">
           {documentToReactComponents(content)}
-        </div>
+        </section>
       )}
 
       {/* Gallery Images (if any) */}
       {images && images.length > 0 && (
-        <div className="gallery">
+        <section className="gallery">
           <h3>Bilder</h3>
           {images.map((image) => (
-            <img
-              key={image.sys.id}
-              src={image.fields.file.url}
-              alt={image.fields.title || 'Gallery Image'}
-              style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
-            />
+            <figure key={image.sys.id}>
+              <img
+                src={image.fields.file.url}
+                alt={image.fields.title || 'Gallery Image'}
+                style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
+              />
+              {image.fields.title && <figcaption>{image.fields.title}</figcaption>}
+            </figure>
           ))}
-        </div>
+        </section>
       )}
-    </div>
+    </article>
   );
 };
 
