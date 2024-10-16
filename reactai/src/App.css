@@ -13,8 +13,6 @@ body {
   line-height: 1.6;  /* Good line height for readability */
   color: #333;  /* Neutral dark color for text */
   background-color: #f9f9f9;  /* Light background color */
-  margin: 0;
-  padding: 0;
   overflow-x: hidden;  /* Prevent horizontal overflow */
 }
 
@@ -133,4 +131,87 @@ p {
 .author-info img {
   margin-left: 10px;
   border: 1px solid #ddd;
+}
+
+/* Gallery Grid */
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));  /* Responsive grid with 1x1 ratio */
+  gap: 10px;
+}
+
+.gallery-item {
+  cursor: pointer;
+}
+
+.gallery-thumbnail {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-thumbnail {
+  transform: scale(1.05); /* Hover effect */
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  position: relative;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.modal-image {
+  max-width: 100%;
+  max-height: 70vh;
+  border-radius: 8px;
+}
+
+.modal-info {
+  text-align: center;
+  margin-top: 10px;
+  color: #fff;
+}
+
+.modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.modal-prev, .modal-next {
+  position: absolute;
+  top: 50%;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2em;
+  cursor: pointer;
+}
+
+.modal-prev {
+  left: 10px;
+}
+
+.modal-next {
+  right: 10px;
 }

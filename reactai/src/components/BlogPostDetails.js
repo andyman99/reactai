@@ -2,11 +2,13 @@ import React, { useState, useEffect } from 'react';
 import * as contentful from 'contentful';
 import { useParams } from 'react-router-dom';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import ImageModal from '../components/ImageModal';  // Import the ImageModal component for full-size image view
 
 const BlogPostDetails = () => {
   const { id } = useParams();
   const [post, setPost] = useState(null);
   const [author, setAuthor] = useState(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null); // For the modal
 
   useEffect(() => {
     const client = contentful.createClient({
@@ -41,8 +43,20 @@ const BlogPostDetails = () => {
   }
 
   const { banner, title, publishDate, description, content, images } = post.fields;
+
+  // Convert publish date to UTC+2 for display
   const publishDateUTCPlus2 = new Date(publishDate);
   publishDateUTCPlus2.setHours(publishDateUTCPlus2.getHours() + 2);
+
+  // Function to open the modal with the selected image
+  const openModal = (index) => {
+    setSelectedImageIndex(index);
+  };
+
+  // Function to close the modal
+  const closeModal = () => {
+    setSelectedImageIndex(null);
+  };
 
   return (
     <article className="blog-post-details">
@@ -79,28 +93,39 @@ const BlogPostDetails = () => {
 
       <p>{description}</p>
 
-      {/* Content (if it exists) */}
+      {/* Rich Text Content */}
       {content && (
         <section className="rich-content">
           {documentToReactComponents(content)}
         </section>
       )}
 
-      {/* Gallery Images (if any) */}
+      {/* Gallery Section */}
       {images && images.length > 0 && (
         <section className="gallery">
           <h3>Bilder</h3>
-          {images.map((image) => (
-            <figure key={image.sys.id}>
-              <img
-                src={image.fields.file.url}
-                alt={image.fields.title || 'Gallery Image'}
-                style={{ width: '100%', height: 'auto', marginBottom: '10px' }}
-              />
-              {image.fields.title && <figcaption>{image.fields.title}</figcaption>}
-            </figure>
-          ))}
+          <div className="gallery-grid">
+            {images.map((image, index) => (
+              <figure key={image.sys.id} onClick={() => openModal(index)} className="gallery-item">
+                <img
+                  src={image.fields.file.url}
+                  alt={image.fields.title || 'Gallery Image'}
+                  className="gallery-thumbnail"
+                />
+                {image.fields.title && <figcaption>{image.fields.title}</figcaption>}
+              </figure>
+            ))}
+          </div>
         </section>
+      )}
+
+      {/* Image Modal */}
+      {selectedImageIndex !== null && (
+        <ImageModal
+          images={images}
+          selectedIndex={selectedImageIndex}
+          onClose={closeModal}
+        />
       )}
     </article>
   );
