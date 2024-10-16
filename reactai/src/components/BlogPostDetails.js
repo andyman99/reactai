@@ -44,9 +44,7 @@ const BlogPostDetails = () => {
 
   const { banner, title, publishDate, description, content, images } = post.fields;
 
-  // Convert publish date to UTC+2 for display
-  const publishDateUTCPlus2 = new Date(publishDate);
-  publishDateUTCPlus2.setHours(publishDateUTCPlus2.getHours() + 2);
+
 
   // Function to open the modal with the selected image
   const openModal = (index) => {
@@ -68,13 +66,14 @@ const BlogPostDetails = () => {
             alt={banner.fields.title || 'Bannerbilde'}
             style={{ width: '100%', height: 'auto' }}
           />
-          <figcaption>{banner.fields.description || 'Banner'}</figcaption>
+          <figcaption>{banner.fields.description || ''}</figcaption>
         </figure>
       )}
 
       <header>
         <h2>{title}</h2>
-        <p>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long' }).format(publishDateUTCPlus2)}</p>
+        <p>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(publishDate))}</p>
+
 
         {/* Author */}
         {author && (
@@ -103,7 +102,7 @@ const BlogPostDetails = () => {
       {/* Gallery Section */}
       {images && images.length > 0 && (
         <section className="gallery">
-          <h3>Bilder</h3>
+          <h3>Galleri</h3>
           <div className="gallery-grid">
             {images.map((image, index) => (
               <figure key={image.sys.id} onClick={() => openModal(index)} className="gallery-item">

@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
 import BlogPostCard from '../components/BlogPostCard';
-import BlogPostDetails from '../components/BlogPostDetails';  // Import BlogPostDetails
+import BlogPostDetails from '../components/BlogPostDetails';  // Import BlogPostDetails'
+import '../css/Blog.css';
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
@@ -14,7 +15,8 @@ const Blog = () => {
       accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
-    const currentDate = new Date().toISOString();
+    const currentDate = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toISOString();
+
 
     client.getEntries({
       content_type: 'blogpost',
@@ -22,7 +24,7 @@ const Blog = () => {
       'fields.publishDate[lte]': currentDate,
     })
     .then((response) => {
-      // Sort posts by publishDate (newest first)
+      // Sort posts by publishDate (newest first
       const sortedPosts = response.items.sort((a, b) => new Date(b.fields.publishDate) - new Date(a.fields.publishDate));
       setPosts(sortedPosts);
     })

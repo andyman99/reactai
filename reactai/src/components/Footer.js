@@ -2,8 +2,12 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer>
-      <p>&copy; {new Date().getFullYear()} ReactAI. All rights reserved.</p>
+    <footer className="footer">
+      <div className="footer-container">
+        <p>&copy; {new Date().getFullYear()} Heiersmed'n.</p>
+        <p>Kontakt oss: info@heiersmednmc.no</p>
+        <p>Telefon: +47 123 456 789</p>
+      </div>
     </footer>
   );
 };
