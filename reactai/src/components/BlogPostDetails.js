@@ -72,7 +72,7 @@ const BlogPostDetails = () => {
 
       <header>
         <h2>{title}</h2>
-        <p>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(publishDate))}</p>
+        <em>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(publishDate))}</em>
 
 
         {/* Author */}
@@ -91,7 +91,7 @@ const BlogPostDetails = () => {
       </header>
 
       <p>{description}</p>
-
+      <hr></hr>
       {/* Rich Text Content */}
       {content && (
         <section className="rich-content">

@@ -8,7 +8,7 @@
   
   /* Blog post card */
   .blog-post-card {
-    max-width: 350px;  /* Maximum width for the card */
+    max-width: 500px;  /* Maximum width for the card */
     background-color: #fff;  /* Background color */
     border: 1px solid #ddd;  /* Light border */
     border-radius: 8px;  /* Rounded corners */
@@ -26,13 +26,9 @@
     object-fit: cover;  /* Ensure the image covers the space without distortion */
   }
   .card-image{
-    max-height: 50%;
+    max-height: 70%;
   }
   
-  .banner-image img{
-    aspect-ratio: 16/5;
-    object-fit: cover;
-  }
   /* Fallback background when no banner image */
   .fallback-background {
     background-color: #f0f0f0;  /* Light gray background */
@@ -83,6 +79,11 @@
     border: 1px solid #ddd;
   }
   
+  .banner-image img{
+    aspect-ratio: 16/5;
+    object-fit: cover;
+  }
+
   /* Gallery Grid */
   .gallery-grid {
     display: grid;
