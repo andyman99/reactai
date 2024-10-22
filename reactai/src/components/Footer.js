@@ -1,4 +1,5 @@
 import React from 'react';
+import RandomProgressBar from './ProgressBar';
 
 const Footer = () => {
   return (
@@ -8,6 +9,7 @@ const Footer = () => {
         <p>Kontakt oss: info@heiersmednmc.no</p>
         <p>Telefon: +47 123 45 678</p>
       </div>
+      <RandomProgressBar/ >
     </footer>
   );
 };

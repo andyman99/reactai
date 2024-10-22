@@ -78,6 +78,6 @@
     text-align: left;
   }
   .event-date p {
-    text-transform: capitalize;
+    text-transform: uppercase;
   }
 }
