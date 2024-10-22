@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "//andyman99.github.io/reactai/static/css/main.5d116140.css",
+    "main.js": "//andyman99.github.io/reactai/static/js/main.ceb6e592.js",
+    "static/js/453.f4ad0648.chunk.js": "//andyman99.github.io/reactai/static/js/453.f4ad0648.chunk.js",
+    "index.html": "//andyman99.github.io/reactai/index.html",
+    "main.5d116140.css.map": "//andyman99.github.io/reactai/static/css/main.5d116140.css.map",
+    "main.ceb6e592.js.map": "//andyman99.github.io/reactai/static/js/main.ceb6e592.js.map",
+    "453.f4ad0648.chunk.js.map": "//andyman99.github.io/reactai/static/js/453.f4ad0648.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5d116140.css",
+    "static/js/main.ceb6e592.js"
+  ]
+}
