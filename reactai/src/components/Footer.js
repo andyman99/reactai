@@ -6,7 +6,7 @@ const Footer = () => {
       <div className="footer-container">
         <p>&copy; {new Date().getFullYear()} Heiersmed'n.</p>
         <p>Kontakt oss: info@heiersmednmc.no</p>
-        <p>Telefon: +47 123 456 789</p>
+        <p>Telefon: +47 123 45 678</p>
       </div>
     </footer>
   );

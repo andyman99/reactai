@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
+import EventCard from '../components/EventCard';
+import EventDetails from '../components/EventDetails';  // Import EventDetails'
+import '../css/Events.css';
 
-const Blog = () => {
-  const [posts, setPosts] = useState([]);
+const Events = () => {
+  const [events, setEvents] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const client = contentful.createClient({
@@ -10,42 +15,48 @@ const Blog = () => {
       accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
-    // Get the current date in ISO format (Contentful uses ISO 8601 format for dates)
-    const currentDate = new Date().toISOString();
+    const currentDate = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toISOString();
 
-    // Fetch entries that are published and where the publish date is greater than or equal to the current date
     client.getEntries({
-      content_type: 'blogpost',  // Replace with your actual content type ID
-      'fields.published': true,  // Filter for entries with the "published" boolean set to true
-      'fields.publishDate[gte]': currentDate,  // Fetch posts where publishDate is greater than or equal to now
+      content_type: 'event',
+      'fields.published': true,
+      'fields.date[gte]': currentDate,
     })
     .then((response) => {
-      setPosts(response.items);  // Set filtered blog posts in state
+      const sortedEvents = response.items.sort((a, b) => new Date(a.fields.date) - new Date(b.fields.date));
+      setEvents(sortedEvents);
     })
     .catch((error) => {
-      console.error("Error fetching blog posts:", error);
+      console.error("Error fetching events:", error);
     });
   }, []);
 
   return (
-    <div>
-      <h2>Blog</h2>
-      <div>
-        {posts.length > 0 ? (
-          posts.map((post) => (
-            <div key={post.sys.id}>
-              <h2>{post.fields.title}</h2>
-              <p>{post.fields.description}</p>
-              <p>{post.fields.content}</p>
-              <p><em>Published on: {new Date(post.fields.publishDate).toDateString()}</em></p>
-            </div>
-          ))
-        ) : (
-          <p>No blog posts available.</p>
-        )}
-      </div>
-    </div>
-  );
-}
+    <section className="container">
+      <h2>Arrangement</h2>
 
-export default Blog;
+      <Routes>
+        {/* Event list (cards) */}
+        <Route
+          path="/"
+          element={(
+            <section className="events">
+              {events.length > 0 ? (
+                events.map((post) => (
+                  <EventCard key={post.sys.id} post={post} onClick={() => navigate(`/events/${post.sys.id}`)} />
+                ))
+              ) : (
+                <p>No events available.</p>
+              )}
+            </section>
+          )}
+        />
+        
+        {/* Event details */}
+        <Route path="/events/:id" element={<EventDetails />} />  {/* Make sure the route is "/events/:id" */}
+      </Routes>
+    </section>
+  );
+};
+
+export default Events;

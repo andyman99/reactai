@@ -17,7 +17,6 @@ const Blog = () => {
 
     const currentDate = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toISOString();
 
-
     client.getEntries({
       content_type: 'blogpost',
       'fields.published': true,

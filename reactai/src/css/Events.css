@@ -1,0 +1,83 @@
+/* Event Card Styles */
+.event-card {
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  max-width: 800px;  /* Set a maximum width for the card */
+  margin: 0 auto 20px auto;  /* Center the card horizontally */
+}
+
+.event-card-content {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.event-date {
+  text-align: right;
+  margin-right: 20px;
+  font-weight: bold;
+  color: #222;
+  font-size: 1.5em;
+  min-width: 60px;
+}
+
+.event-date p {
+  margin: 0;
+}
+
+.vertical-line {
+  height: 100%;
+  width: 2px;
+  background-color: #ddd;
+  margin-right: 20px;
+}
+
+.event-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.event-info h3 {
+  margin: 0;
+  font-size: 1.2em;
+  color: #222;
+}
+
+.event-info p {
+  margin: 5px 0 0;
+  color: #777;
+  font-size: 0.9em;
+}
+
+/* Responsive adjustments for the event cards */
+@media (max-width: 768px) {
+  .event-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .event-card-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .event-info {
+    margin-top: 10px;
+  }
+
+  .event-date {
+    text-align: left;
+  }
+  .event-date p {
+    text-transform: capitalize;
+  }
+}
