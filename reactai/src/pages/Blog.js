@@ -35,7 +35,10 @@ const Blog = () => {
   return (
     <section className="container">
       <h2>Blogg</h2>
-
+      {/*Fjern*/} <em>Dette er en prosjekt side. Det er mye feilinformasjon her. Ikke se på dette som fakta.</em>
+      {/*Fjern*/} <hr></hr>
+      {/*Fjern*/} <br></br>
+      
       <Routes>
         {/* Blog post list (cards) */}
         <Route

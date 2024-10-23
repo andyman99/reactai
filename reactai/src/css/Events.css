@@ -1,6 +1,27 @@
-/* Event Card Styles */
+/* Event Card and Grid Styles */
+.events {
+  gap: 20px;  /* Add some space between rows */
+}
+
+.event-row {
+  display: grid; /* Ensures that each event row is part of the grid */
+  grid-template-columns: 100px 1fr;
+  grid-template-areas: "year event";
+}
+
+.event-year {
+  grid-area: year;
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 10px;
+  border-right: 2px solid #ddd;  /* Add a vertical line separating the year and the event */
+  text-align: right;
+}
+
 .event-card {
   display: flex;
+  grid-area: event;
+  width: 100%;
   align-items: center;
   background-color: #fff;
   border: 1px solid #ddd;
@@ -30,6 +51,7 @@
 
 .event-date p {
   margin: 0;
+  text-transform: uppercase;  /* Ensures the month is in uppercase */
 }
 
 .vertical-line {

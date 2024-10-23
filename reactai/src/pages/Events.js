@@ -15,7 +15,7 @@ const Events = () => {
       accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
-    const currentDate = new Date().toISOString();
+    const currentDate = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toISOString();
 
     client.getEntries({
       content_type: 'event',
@@ -31,30 +31,46 @@ const Events = () => {
     });
   }, []);
 
+  // Function to group events by year
+  const renderEventsByYear = () => {
+    let currentYear = null;
+    return events.map((post) => {
+      const eventYear = new Date(post.fields.date).getFullYear();
+      const showYear = eventYear !== currentYear; // Only show the year if it changes
+      currentYear = eventYear;
+      return (
+        <EventCard
+          key={post.sys.id}
+          post={post}
+          year={showYear ? eventYear : null}  // Pass the year prop only if it's the first event of the year
+          onClick={() => navigate(`/events/${post.sys.id}`)}
+        />
+      );
+    });
+  };
+
   return (
     <section className="container">
+      <h2>Arrangement</h2>
+      {/*Fjern*/} <em>Dette er en prosjekt side. Det er mye feilinformasjon her. Ikke se på dette som fakta.</em>
+      {/*Fjern*/} <hr></hr>
+      {/*Fjern*/} <br></br>
       <Routes>
-        {/* Event list route */}
-        <Route 
-          path="/" 
+        {/* Event list (cards) */}
+        <Route
+          path="/"
           element={(
             <section className="events">
-              <h2>Arrangement</h2>
               {events.length > 0 ? (
-                events.map((event) => (
-                  <EventCard 
-                    key={event.sys.id} 
-                    post={event} 
-                    onClick={() => navigate(`/events/${event.sys.id}`)}  // Navigate to event details
-                  />
-                ))
+                renderEventsByYear()
               ) : (
                 <p>No events available.</p>
               )}
             </section>
           )}
         />
-        {/* Event details route */}
+        
+        {/* Event details */}
         <Route path="/:id" element={<EventDetails />} />
       </Routes>
     </section>
