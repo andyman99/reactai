@@ -17,6 +17,15 @@ body {
   min-height: 100vh;
 }
 
+/*Selects the parent of main, being the layout, and lets the footer stay on the bottom*/
+div:has(main){
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+main{
+  flex-grow: 1;
+}
 /* Header Styles */
 .header {
   background-color: #333;  /* Dark background */
@@ -38,6 +47,16 @@ body {
   font-weight: bold;
 }
 
+/* Hamburger button styles */
+.hamburger {
+  display: none;
+  font-size: 2em;
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
 .nav-links {
   list-style: none;
   display: flex;
@@ -48,7 +67,7 @@ body {
   font-size: 1.1em;
 }
 
-.nav-links a {
+header a {
   color: #fff;
   text-decoration: none;
 }
@@ -112,5 +131,30 @@ p {
   .container {
     padding: 10px;
     max-width: 100%;  /* Make the container full-width on small screens */
+  }
+
+  /* Show the hamburger icon on smaller screens */
+  .hamburger {
+    display: block;
+  }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    padding: 20px;
+    text-align: right;
+  }
+
+  /* Show the navigation when open */
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li {
+    margin-bottom: 20px;
   }
 }

@@ -7,6 +7,8 @@ import Contact from './pages/Contact';
 import Blog from './pages/Blog';  // Blog component that shows cards
 import Layout from './components/Layout';  // Layout component wrapping everything
 import './App.css';  // Link to App.css
+import 'leaflet/dist/leaflet.css';  // Import Leaflet CSS globally
+
 
 function App() {
   return (
