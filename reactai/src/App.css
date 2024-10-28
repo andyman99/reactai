@@ -15,22 +15,25 @@ body {
   background-color: #f9f9f9;  /* Light background color */
   overflow-x: hidden;  /* Prevent horizontal overflow */
   min-height: 100vh;
+
 }
 
 /*Selects the parent of main, being the layout, and lets the footer stay on the bottom*/
-div:has(main){
-  display: flex;
-  flex-direction: column;
+.layout{
+  display: grid;
+  grid-template-areas: "header header header" ". main aside" "footer footer footer";
+  grid-template-columns: .5fr 3fr 1fr;
   min-height: 100vh;
 }
 main{
-  flex-grow: 1;
+  grid-area: main;
 }
 /* Header Styles */
 .header {
   background-color: #333;  /* Dark background */
   color: #fff;  /* Light text */
   padding: 20px 0;
+  grid-area: header;
 }
 
 .header-container {
@@ -78,6 +81,7 @@ header a {
 
 /* Footer Styles */
 .footer {
+  grid-area: footer;
   background-color: #222;  /* Dark footer */
   color: #ccc;  /* Light gray text */
   padding: 20px;
@@ -94,6 +98,9 @@ header a {
   font-size: 0.9em;
 }
 
+aside{
+  grid-area: aside;
+}
 
 /* General anchor styles */
 a {
@@ -126,8 +133,19 @@ p {
   padding: 20px;  /* Add padding inside the container */
 }
 
+
+@media (max-width:1400px){
+  .layout{
+    grid-template-areas: "header header" "main aside" "footer footer";
+    grid-template-columns: 3fr 1fr;
+  }
+}
 /* Responsive layout for smaller screens */
 @media (max-width: 768px) {
+  .layout{
+    grid-template-areas: "header" "main" "aside" "footer";
+    grid-template-columns: 1fr;
+  }
   .container {
     padding: 10px;
     max-width: 100%;  /* Make the container full-width on small screens */
