@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "//andyman99.github.io/reactai/static/css/main.6305fac7.css",
-    "main.js": "//andyman99.github.io/reactai/static/js/main.3b62d9e1.js",
+    "main.css": "//andyman99.github.io/reactai/static/css/main.6833576d.css",
+    "main.js": "//andyman99.github.io/reactai/static/js/main.774fba3b.js",
     "static/js/453.f4ad0648.chunk.js": "//andyman99.github.io/reactai/static/js/453.f4ad0648.chunk.js",
     "index.html": "//andyman99.github.io/reactai/index.html",
-    "main.6305fac7.css.map": "//andyman99.github.io/reactai/static/css/main.6305fac7.css.map",
-    "main.3b62d9e1.js.map": "//andyman99.github.io/reactai/static/js/main.3b62d9e1.js.map",
+    "main.6833576d.css.map": "//andyman99.github.io/reactai/static/css/main.6833576d.css.map",
+    "main.774fba3b.js.map": "//andyman99.github.io/reactai/static/js/main.774fba3b.js.map",
     "453.f4ad0648.chunk.js.map": "//andyman99.github.io/reactai/static/js/453.f4ad0648.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6305fac7.css",
-    "static/js/main.3b62d9e1.js"
+    "static/css/main.6833576d.css",
+    "static/js/main.774fba3b.js"
   ]
 }
