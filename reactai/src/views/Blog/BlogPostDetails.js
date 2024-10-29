@@ -42,7 +42,7 @@ const BlogPostDetails = () => {
     return <p>Laster inn...</p>;
   }
 
-  const { banner, title, publishDate, description, content, images } = post.fields;
+  const { banner, title, date, description, content, images } = post.fields;
 
 
 
@@ -72,7 +72,7 @@ const BlogPostDetails = () => {
 
       <header>
         <h2>{title}</h2>
-        <em>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(publishDate))}</em>
+        <em>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(date))}</em>
 
 
         {/* Author */}
@@ -98,7 +98,7 @@ const BlogPostDetails = () => {
           {documentToReactComponents(content)}
         </section>
       )}
-
+      
       {/* Gallery Section */}
       {images && images.length > 0 && (
         <section className="gallery">

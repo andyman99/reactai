@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
-import BlogPostCard from './BlogPostCard';
+import {Card} from '../../components/index';
 import BlogPostDetails from './BlogPostDetails';  // Import BlogPostDetails'
 import './Blog.css';
 
@@ -20,11 +20,11 @@ const Blog = () => {
     client.getEntries({
       content_type: 'blogpost',
       'fields.published': true,
-      'fields.publishDate[lte]': currentDate,
+      'fields.date[lte]': currentDate,
     })
     .then((response) => {
       // Sort posts by publishDate (newest first
-      const sortedPosts = response.items.sort((a, b) => new Date(b.fields.publishDate) - new Date(a.fields.publishDate));
+      const sortedPosts = response.items.sort((a, b) => new Date(b.fields.date) - new Date(a.fields.date));
       setPosts(sortedPosts);
     })
     .catch((error) => {
@@ -47,7 +47,7 @@ const Blog = () => {
             <section className="blog-posts">
               {posts.length > 0 ? (
                 posts.map((post) => (
-                  <BlogPostCard key={post.sys.id} post={post} onClick={() => navigate(`/blog/${post.sys.id}`)} />
+                  <Card key={post.sys.id} post={post} onClick={() => navigate(`/blog/${post.sys.id}`)} />
                 ))
               ) : (
                 <p>No blog posts available.</p>

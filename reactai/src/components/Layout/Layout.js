@@ -1,5 +1,6 @@
 import React from 'react';
-import { Header, Footer, Sidebar } from "../components/index"
+import { Header, Footer, Sidebar } from "../index"
+import "./Layout.css";
 
 const Layout = ({ children }) => {
   return (

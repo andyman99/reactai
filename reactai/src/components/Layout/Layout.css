@@ -1,0 +1,49 @@
+/*Selects the parent of main, being the layout, and lets the footer stay on the bottom*/
+.layout{
+    display: grid;
+    grid-template-areas: "header header header" ". main aside" "footer footer footer";
+    grid-template-columns: .5fr 3fr 1fr;
+    min-height: 100vh;
+  }
+  main{
+    grid-area: main;
+  }
+  
+  aside{
+    grid-area: aside;
+  }
+
+  header{
+    grid-area: header;
+  }
+
+  footer{
+    grid-area: footer;
+  }
+
+
+  /* Centered container with max-width */
+.container {
+    max-width: 1200px;  /* Limit the width for large screens */
+    margin: 0 auto;  /* Center the content */
+    padding: 20px;  /* Add padding inside the container */
+  }
+  
+  
+  @media (max-width:1400px){
+    .layout{
+      grid-template-areas: "header header" "main aside" "footer footer";
+      grid-template-columns: 3fr 1fr;
+    }
+  }
+  /* Responsive layout for smaller screens */
+  @media (max-width: 768px) {
+    .layout{
+      grid-template-areas: "header" "main" "aside" "footer";
+      grid-template-columns: 1fr;
+    }
+    .container {
+      padding: 10px;
+      max-width: 100%;  /* Make the container full-width on small screens */
+    }
+  }

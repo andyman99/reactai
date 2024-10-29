@@ -6,67 +6,6 @@
     padding: 20px;
   }
   
-  /* Blog post card */
-  .blog-post-card {
-    max-width: 500px;  /* Maximum width for the card */
-    background-color: #fff;  /* Background color */
-    border: 1px solid #ddd;  /* Light border */
-    border-radius: 8px;  /* Rounded corners */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Subtle shadow */
-    overflow: hidden;  /* Ensure content stays within the card */
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  /* Card image */
-  .card-image img, .card-image {
-    width: 100%;  /* Image fills the card width */
-    height: 100%;  /* Image fills the height of its container */
-    object-fit: cover;  /* Ensure the image covers the space without distortion */
-  }
-  .card-image{
-    max-height: 70%;
-  }
-  
-  /* Fallback background when no banner image */
-  .fallback-background {
-    background-color: #f0f0f0;  /* Light gray background */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* Fallback text */
-  .fallback-text {
-    font-size: 2em;
-    color: #555;
-    font-weight: bold;
-  }
-  
-  /* Card content */
-  .card-content {
-    padding: 15px;
-    flex-grow: 1;  /* Ensure the content grows to fill the space */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-  }
-  
-  /* Title inside card content */
-  .card-content h3 {
-    margin: 0 0 10px 0;
-    font-size: 1.2em;
-    color: #333;
-  }
-  
-  /* Publish date inside card content */
-  .card-content p {
-    margin: 0;
-    font-size: 0.9em;
-    color: #777;
-  }
-  
   /* Author information */
   .author-info {
     display: flex;

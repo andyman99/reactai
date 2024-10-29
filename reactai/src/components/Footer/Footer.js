@@ -1,5 +1,6 @@
 import React from 'react';
 import RandomProgressBar from './ProgressBar';
+import "./Footer.css";
 
 const Footer = () => {
   return (

@@ -1,0 +1,77 @@
+/* Header Styles */
+.header {
+    background-color: #333;  /* Dark background */
+    color: #fff;  /* Light text */
+    padding: 20px 0;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
+  
+  /* Hamburger button styles */
+  .hamburger {
+    display: none;
+    font-size: 2em;
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .nav-links li {
+    font-size: 1.1em;
+  }
+  
+  header a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .nav-links a:hover, .nav-links .active a {
+    color: #007BFF;  /* Blue hover and active state */
+  }
+
+
+  @media (max-width: 768px) {
+    /* Show the hamburger icon on smaller screens */
+    .hamburger {
+      display: block;
+    }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #333;
+      width: 100%;
+      padding: 20px;
+      text-align: right;
+    }
+  
+    /* Show the navigation when open */
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .nav-links li {
+      margin-bottom: 20px;
+    }
+  }
