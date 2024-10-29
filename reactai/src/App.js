@@ -1,10 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import Events from './pages/Events';
-import Contact from './pages/Contact';
-import Blog from './pages/Blog';  // Blog component that shows cards
+import { Home, About, Events, Contact, Blog } from "./views";
 import Layout from './components/Layout';  // Layout component wrapping everything
 import './App.css';  // Link to App.css
 import 'leaflet/dist/leaflet.css';  // Import Leaflet CSS globally

@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
-import BlogPostCard from '../components/BlogPostCard';
-import BlogPostDetails from '../components/BlogPostDetails';  // Import BlogPostDetails'
-import '../css/Blog.css';
+import BlogPostCard from './BlogPostCard';
+import BlogPostDetails from './BlogPostDetails';  // Import BlogPostDetails'
+import './Blog.css';
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);

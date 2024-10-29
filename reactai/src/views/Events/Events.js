@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
-import EventCard from '../components/EventCard';
-import EventDetails from '../components/EventDetails';
-import '../css/Events.css';
+import EventCard from './EventCard';
+import EventDetails from './EventDetails';
+import './Events.css';
 
 const Events = () => {
   const [events, setEvents] = useState([]);

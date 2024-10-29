@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import * as contentful from 'contentful';
 import { useParams } from 'react-router-dom';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import ImageModal from '../components/ImageModal';  // Import the ImageModal component for full-size image view
+import ImageModal from './ImageModal';  // Import the ImageModal component for full-size image view
 
 const BlogPostDetails = () => {
   const { id } = useParams();

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
-import '../css/Sidebar.css'; // Import the CSS file from the css folder
+import './Sidebar.css'; // Import the CSS file from the css folder
 
 const Sidebar = () => {
   const [featuredPosts, setFeaturedPosts] = useState([]);
