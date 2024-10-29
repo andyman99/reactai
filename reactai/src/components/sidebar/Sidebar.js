@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
 import { Card } from '../../components'; // Import the Card component
 import './Sidebar.css';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   const [featuredPosts, setFeaturedPosts] = useState([]);
@@ -49,8 +50,23 @@ const Sidebar = () => {
 
   return (
     <aside className="sidebar">
+            <section className="sidebar-section">
+        <Link to="/events" ><h3>Neste Arrangement</h3></Link>
+        {upcomingEvents.length > 0 ? (
+          upcomingEvents.map((event) => (
+            <Card 
+              key={event.sys.id}
+              post={event}
+              onClick={() => navigate(`/events/${event.sys.id}`)}
+            />
+          ))
+        ) : (
+          <p>Ingen kommende arrangementer tilgjengelig.</p>
+        )}
+      </section>
+      
       <section className="sidebar-section">
-        <h3>Fremhevede Blogginnlegg</h3>
+      <Link to="/blog" ><h3>Fremhevede blogginnlegg</h3></Link>
         {featuredPosts.length > 0 ? (
           featuredPosts.map((post) => (
             <Card 
@@ -64,20 +80,7 @@ const Sidebar = () => {
         )}
       </section>
 
-      <section className="sidebar-section">
-        <h3>Neste Arrangement</h3>
-        {upcomingEvents.length > 0 ? (
-          upcomingEvents.map((event) => (
-            <Card 
-              key={event.sys.id}
-              post={event}
-              onClick={() => navigate(`/events/${event.sys.id}`)}
-            />
-          ))
-        ) : (
-          <p>Ingen kommende arrangementer tilgjengelig.</p>
-        )}
-      </section>
+
     </aside>
   );
 };

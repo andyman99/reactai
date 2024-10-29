@@ -17,7 +17,6 @@ const Home = () => {
         <blockquote>"Den beste avgjørelsen jeg tok var å bli med i denne klubben. Det er mer enn et fellesskap; det er en familie." - Medlem 2</blockquote>
       </section>
     </div>
-    
   );
 };
 
