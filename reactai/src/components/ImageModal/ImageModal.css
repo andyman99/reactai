@@ -1,0 +1,60 @@
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .modal-image {
+    max-width: 100%;
+    max-height: 70vh;
+    border-radius: 8px;
+  }
+  
+  .modal-info {
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+  }
+  
+  .modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  
+  .modal-prev, .modal-next {
+    position: absolute;
+    top: 50%;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+  }
+  
+  .modal-prev {
+    left: 10px;
+  }
+  
+  .modal-next {
+    right: 10px;
+  }

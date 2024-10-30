@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./ImageModal.css"
 
 const ImageModal = ({ images, selectedIndex, onClose }) => {
   const [currentIndex, setCurrentIndex] = useState(selectedIndex);

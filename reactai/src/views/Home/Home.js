@@ -1,4 +1,5 @@
 import React from 'react';
+import { Carousel, ImageModal } from '../../components';
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         <blockquote>"Å være en del av denne klubben har endret livet mitt. Turene, kameratskapet – det er noe helt spesielt." - Medlem 1</blockquote>
         <blockquote>"Den beste avgjørelsen jeg tok var å bli med i denne klubben. Det er mer enn et fellesskap; det er en familie." - Medlem 2</blockquote>
       </section>
+      <Carousel postId="2YRVWvep958nAKkmREmjO8" />
     </div>
   );
 };
