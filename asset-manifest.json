@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "//andyman99.github.io/reactai/static/css/main.28e916ca.css",
-    "main.js": "//andyman99.github.io/reactai/static/js/main.889ad237.js",
-    "static/js/453.f4ad0648.chunk.js": "//andyman99.github.io/reactai/static/js/453.f4ad0648.chunk.js",
-    "index.html": "//andyman99.github.io/reactai/index.html",
-    "main.28e916ca.css.map": "//andyman99.github.io/reactai/static/css/main.28e916ca.css.map",
-    "main.889ad237.js.map": "//andyman99.github.io/reactai/static/js/main.889ad237.js.map",
-    "453.f4ad0648.chunk.js.map": "//andyman99.github.io/reactai/static/js/453.f4ad0648.chunk.js.map"
+    "main.css": "/reactai/static/css/main.28e916ca.css",
+    "main.js": "/reactai/static/js/main.0670b4d4.js",
+    "static/js/453.f4ad0648.chunk.js": "/reactai/static/js/453.f4ad0648.chunk.js",
+    "index.html": "/reactai/index.html",
+    "main.28e916ca.css.map": "/reactai/static/css/main.28e916ca.css.map",
+    "main.0670b4d4.js.map": "/reactai/static/js/main.0670b4d4.js.map",
+    "453.f4ad0648.chunk.js.map": "/reactai/static/js/453.f4ad0648.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.28e916ca.css",
-    "static/js/main.889ad237.js"
+    "static/js/main.0670b4d4.js"
   ]
 }
