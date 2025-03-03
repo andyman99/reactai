@@ -15,6 +15,7 @@ const Events = () => {
       accessToken: process.env.REACT_APP_CONTENTFUL_ACCESS_TOKEN,
     });
 
+    // Get current date (adjust for timezone if needed)
     const currentDate = new Date(new Date().getTime() + 2 * 60 * 60 * 1000).toISOString();
 
     client.getEntries({
@@ -31,18 +32,19 @@ const Events = () => {
     });
   }, []);
 
-  // Function to group events by year
+  // Group events by year and render EventCards
   const renderEventsByYear = () => {
     let currentYear = null;
     return events.map((post) => {
       const eventYear = new Date(post.fields.date).getFullYear();
-      const showYear = eventYear !== currentYear; // Only show the year if it changes
+      const showYear = eventYear !== currentYear;
       currentYear = eventYear;
+
       return (
         <EventCard
           key={post.sys.id}
           post={post}
-          year={showYear ? eventYear : null}  // Pass the year prop only if it's the first event of the year
+          year={showYear ? eventYear : null}
           onClick={() => navigate(`/events/${post.sys.id}`)}
         />
       );
@@ -52,11 +54,12 @@ const Events = () => {
   return (
     <section className="container">
       <h2>Arrangement</h2>
-      {/*Fjern*/} <em>Dette er en prosjekt side. Det er mye feilinformasjon her. Ikke se på dette som fakta.</em>
-      {/*Fjern*/} <hr></hr>
-      {/*Fjern*/} <br></br>
+      <em>Dette er en prosjekt side. Det er mye feilinformasjon her. Ikke se på dette som fakta.</em>
+      <hr />
+      <br />
+
       <Routes>
-        {/* Event list (cards) */}
+        {/* Events list */}
         <Route
           path="/"
           element={(
@@ -69,8 +72,8 @@ const Events = () => {
             </section>
           )}
         />
-        
-        {/* Event details */}
+
+        {/* Event details page */}
         <Route path="/:id" element={<EventDetails />} />
       </Routes>
     </section>
