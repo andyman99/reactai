@@ -20,8 +20,8 @@ const RandomProgressBar = () => {
 
   return (
     <div>
-      <br></br>
-      <hr></hr>
+      <br />
+      <hr aria-hidden="true" />
       <p>Progress towards completed website {progress}%</p>
       <progress value={progress} max="100"></progress>
     </div>

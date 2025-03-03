@@ -55,7 +55,7 @@ const Events = () => {
     <section className="container">
       <h2>Arrangement</h2>
       <em>Dette er en prosjekt side. Det er mye feilinformasjon her. Ikke se på dette som fakta.</em>
-      <hr />
+      <hr aria-hidden="true" />
       <br />
 
       <Routes>
