@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as contentful from 'contentful';
-import { Card } from '../../components'; // Import the Card component
+import { Card } from '..'; // Import the Card component
 import './Sidebar.css';
 import { Link } from 'react-router-dom';
 
