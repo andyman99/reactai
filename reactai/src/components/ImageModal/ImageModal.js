@@ -15,23 +15,23 @@ const ImageModal = ({ images, selectedIndex, onClose }) => {
   };
 
   // Handle keyboard navigation (arrow keys)
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'ArrowRight') {
-        handleNext();
-      } else if (event.key === 'ArrowLeft') {
-        handlePrevious();
-      } else if (event.key === 'Escape') {
-        onClose();
-      }
-    };
+  const handleKeyDown = (event) => {
+    if (event.key === 'ArrowRight') {
+      handleNext();
+    } else if (event.key === 'ArrowLeft') {
+      handlePrevious();
+    } else if (event.key === 'Escape') {
+      onClose();
+    }
+  };
 
+  useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [currentIndex]);
+  }, [handleNext, handlePrevious, onClose]);
 
   // Handle touch swiping
   const [touchStartX, setTouchStartX] = useState(0);
