@@ -71,7 +71,7 @@ const BlogPostDetails = () => {
       )}
 
       <header>
-        <h2>{title}</h2>
+        <h3>{title}</h3>
         <em>Publisert: {new Intl.DateTimeFormat('no-NO', { dateStyle: 'long', timeStyle: 'short' }).format(new Date(date))}</em>
 
 

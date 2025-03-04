@@ -51,7 +51,7 @@ const Sidebar = () => {
   return (
     <aside className="sidebar">
             <section className="sidebar-section">
-        <Link to="/events" ><h3>Neste Arrangement</h3></Link>
+        <Link to="/events" ><h2>Neste Arrangement</h2></Link>
         {upcomingEvents.length > 0 ? (
           upcomingEvents.map((event) => (
             <Card 
@@ -66,7 +66,7 @@ const Sidebar = () => {
       </section>
       
       <section className="sidebar-section">
-      <Link to="/blog" ><h3>Fremhevede blogginnlegg</h3></Link>
+      <Link to="/blog" ><h2>Fremhevede blogginnlegg</h2></Link>
         {featuredPosts.length > 0 ? (
           featuredPosts.map((post) => (
             <Card 
