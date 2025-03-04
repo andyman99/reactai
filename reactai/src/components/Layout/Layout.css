@@ -1,5 +1,5 @@
 /*Selects the parent of main, being the layout, and lets the footer stay on the bottom*/
-.layout{
+#root{
     display: grid;
     grid-template-areas: "header header header" ". main aside" "footer footer footer";
     grid-template-columns: .5fr 3fr 1fr;
